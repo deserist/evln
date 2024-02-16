@@ -1,0 +1,7 @@
+﻿//angular.module("liveSearchModule", [])
+//    .controller("SearchController", function ($scope, $http) {
+//        $scope.children =
+//            $.getJSON("/umbraco/tapas/content/getdescendantsorself/?url=/") // / (kök) altındaki tüm elemanları getir. 
+//           //.done(function(data) { console.log(data); }); // Getirdiğin tüm elemanları console 'a da yaz bakalım. (CONSOLE LOG'ları yorum satırı yapıldı.)
+
+//    });

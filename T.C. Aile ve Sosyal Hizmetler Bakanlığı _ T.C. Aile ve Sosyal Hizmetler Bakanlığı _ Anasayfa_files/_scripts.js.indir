@@ -1,0 +1,72 @@
+﻿$('.toggle').click(function (e) {
+    e.preventDefault();
+
+    var $this = $(this);
+
+    if ($this.next().hasClass('show')) {
+        $this.next().removeClass('show');
+        $this.next().slideUp(350);
+    } else {
+        $this.parent().parent().find('li .inner').removeClass('show');
+        $this.parent().parent().find('li .inner').slideUp(350);
+        $this.next().toggleClass('show');
+        $this.next().slideToggle(350);
+    }
+
+
+    //if clicking off from this toggle, will collapse all other list items
+    $("li a.toggle").not(this).removeClass('expanded'); 
+
+    // ensures all ancestors of this class will also remain expanded
+    $this.parents('.inner').siblings('a.toggle').addClass("expanded"); 
+
+    // to expand or collapse arrow on click (toggle)
+    $this.toggleClass("expanded"); 
+
+
+});
+
+
+
+
+
+//ACCORDION BUTTON ACTION (ON CLICK DO THE FOLLOWING)
+$('.accordionButton').click(function () {
+
+    //REMOVE THE ON CLASS FROM ALL BUTTONS
+    $('.accordionButton').removeClass('on');
+
+    //NO MATTER WHAT WE CLOSE ALL OPEN SLIDES
+    $('.accordionContent').slideUp('normal');
+
+    //IF THE NEXT SLIDE WASN'T OPEN THEN OPEN IT
+    if ($(this).next().is(':hidden') == true) {
+
+        //ADD THE ON CLASS TO THE BUTTON
+        $(this).addClass('on');
+
+        //OPEN THE SLIDE
+        $(this).next().slideDown('normal');
+    }
+
+});
+
+/*** REMOVE IF MOUSEOVER IS NOT REQUIRED ***/
+
+//ADDS THE .OVER CLASS FROM THE STYLESHEET ON MOUSEOVER 
+$('.accordionButton').mouseover(function () {
+    $(this).addClass('over');
+
+    //ON MOUSEOUT REMOVE THE OVER CLASS
+}).mouseout(function () {
+    $(this).removeClass('over');
+});
+
+/*** END REMOVE IF MOUSEOVER IS NOT REQUIRED ***/
+
+/********************************************************************************************************************
+CLOSES ALL ON PAGE LOAD
+********************************************************************************************************************/
+$('.accordionContent').hide();
+$('.accordionContent2').show();
+$('.open').trigger('click');
